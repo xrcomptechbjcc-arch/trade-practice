@@ -49,6 +49,16 @@ p{margin:0}
 .nav a:hover{color:var(--ink);background:var(--surface-2)}
 .nav a[aria-current="page"]{color:var(--accent);background:var(--accent-soft)}
 body.exam-mode .nav{display:none}
+/* Graded/emailed tests run in exam-mode: bright-yellow background so an in-progress
+   emailed test (graded sub-unit test, unit exam, or full practice exam) is obvious at a glance.
+   Question cards keep their own surface color, so text stays readable in light and dark themes. */
+body.exam-mode{background:#ffe600}
+body.exam-mode::before{background:#ffe600}
+/* Non-graded practice sets run in practice-mode: bright-blue background so an in-progress
+   practice test (nothing emailed) is just as easy to spot as a graded one.
+   Question cards keep their own surface color, so text stays readable in light and dark themes. */
+body.practice-mode{background:#1e90ff}
+body.practice-mode::before{background:#1e90ff}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:.01em;border-radius:9px;padding:11px 18px;border:1px solid transparent;cursor:pointer;text-decoration:none;line-height:1.1}
@@ -250,7 +260,7 @@ body.exam-mode footer{display:none}
 <main id="app"><div class="wrap loading">Loading…</div></main>
 
 <footer>
-  <div class="wrap">Computer Technology Trade · Bamberg Job Corps Center. Practice questions on this site are original and written to the CompTIA Network+ N10-009 objectives. They are not actual CompTIA exam questions.</div>
+  <div class="wrap">Computer Technology Trade. Practice questions on this site are original and written to the CompTIA Network+ N10-009 objectives. They are not actual CompTIA exam questions.</div>
 </footer>
 
 <script>
@@ -263,6 +273,7 @@ const CONFIG = {
 };
 const PASS_MARK = 80;
 const SIZES = { subunit: 30, unit: 60, unitMinutes: 60, full: 90, fullMinutes: 120 };
+const LOCKS = {"1.1":"tcp8613","1.1a":"fade143","1.1b":"cdn8794","1.1c":"pap5491","1.1d":"node442","1.1e":"ssl5643","1.1f":"loss247","1.1g":"snmp105","1.2":"pop5744","1.2a":"sip1907","1.2b":"tls7767","1.2c":"dmz8554","1.3":"acl2800","1.3a":"dhcp677","1.3b":"sfp5509","1.3c":"ospf425","1.3d":"hops315","1.3e":"isp8581","1.3f":"nat2288","1.3g":"wlan079","1.3h":"port656","1.3i":"man1485","1.3j":"ntp1842","1.4":"ftp4478","1.4a":"nfs5290","1.4b":"jack096","1.4c":"wpa8142","1.4d":"scsi978","1.4e":"coax304","1.4f":"api2923","1.4g":"eap5728","1.4h":"pdu4786","1.4i":"vip0938","1.4j":"nic7864","1.4k":"vpn1996","1.4l":"bgp1928","1.4m":"ttl2608","1.4n":"poe3373","1.4o":"stp4509","1.4p":"imap399","1.4q":"aaa8545","1.4r":"qos3830","1.4s":"vtp2279","1.4t":"lan1728","1.5":"isdn437","1.5a":"mac1732","1.5b":"pat7936","1.6":"cli0614","1.6a":"osi7922","1.6b":"sata414","1.6c":"wifi865","1.6d":"rip0030","1.7":"rack587","1.7a":"ips0503","1.7b":"igmp379","1.7c":"iot1705","1.8":"ssid657","1.8a":"rdp2768","1.8b":"tap6277","1.8c":"sdn8278","1.8d":"ids1681","1.8e":"vlan718","1.8f":"uefi310","1.9":"wan3982","1.9a":"ldap767","1.9b":"baud989","1.9c":"http385","1.9d":"gre1932","1.9e":"dns6176","1.9f":"pstn174","2.1":"icmp562","2.1a":"rfc6179","2.1b":"bios242","2.1c":"udp9439","2.1d":"hub4014","2.1e":"ssh0886","2.1f":"mesh015","2.1g":"gui6742","2.2":"mtu5763","2.2a":"arp0863","2.2b":"ping671","2.2c":"gain111","2.2d":"smb4912","2.3":"aes6590","2.3a":"tcp0593","2.3b":"fade166","2.3c":"cdn5046","2.3d":"pap3725","2.3e":"node979","2.3f":"ssl4538","2.3g":"loss160","2.3h":"snmp198","2.3i":"pop1254","2.4":"sip2579","2.4a":"tls4130","2.4b":"dmz4334","2.4c":"acl2059","3.1":"dhcp931","3.1a":"sfp2462","3.1b":"ospf667","3.1c":"hops570","3.1d":"isp6723","3.2":"nat9759","3.2a":"wlan840","3.2b":"port253","3.3":"man6018","3.3a":"ntp8833","3.3b":"ftp8282","3.3c":"nfs3196","3.3d":"jack282","3.4":"wpa1980","3.4a":"scsi252","3.4b":"coax902","3.4c":"api1659","3.5":"eap3789","3.5a":"pdu5924","3.5b":"vip8325","3.5c":"nic3115","3.5d":"vpn1357","3.5e":"bgp0101","4.1":"ttl6712","4.1a":"poe8398","4.1b":"stp5798","4.1c":"imap916","4.1d":"aaa6449","4.1e":"qos5763","4.1f":"vtp6517","4.2":"lan5340","4.2a":"isdn577","4.2b":"mac5057","4.2c":"pat8334","4.2d":"cli2576","4.2e":"osi9329","4.2f":"sata800","4.2g":"wifi816","4.2h":"rip9521","4.2i":"rack592","4.2j":"ips1902","4.2k":"igmp732","4.2l":"iot7277","4.2m":"ssid524","4.3":"rdp7522","4.3a":"tap6499","4.3b":"sdn5363","4.3c":"ids0007","4.3d":"vlan788","4.3e":"uefi984","5.1":"wan3818","5.1a":"ldap280","5.1b":"baud923","5.1c":"http376","5.1d":"gre2195","5.1e":"dns4640","5.1f":"pstn717","5.1g":"icmp302","5.2":"rfc9611","5.2a":"bios052","5.2b":"udp2521","5.2c":"hub5374","5.3":"ssh1212","5.3a":"mesh958","5.3b":"gui7605","5.3c":"mtu1551","5.3d":"arp8901","5.3e":"ping929","5.3f":"gain513","5.4":"smb5116","5.4a":"aes0770","5.4b":"tcp8027","5.4c":"fade220","5.4d":"cdn5239","5.4e":"pap8760","5.4f":"node763","5.4g":"ssl6082","5.5":"loss936","5.5a":"snmp572","5.5b":"pop5309","5.5c":"sip0087","unit-1":"tls1024","unit-2":"dmz1359","unit-3":"acl6227","unit-4":"dhcp866","unit-5":"sfp9308","full":"ospf872"};
 
 /* ---------- Syllabus: CompTIA Network+ N10-009 ---------- */
 const UNITS = [
@@ -492,7 +503,7 @@ function viewNetplus(){
       </a>`; }).join("")}
     </div>
   </section>`;
-  document.getElementById("fullBtn").onclick = () => startExamForm({kind:"full", title:"Practice Network+ Exam", ids:UNITS.flatMap(unitIds), n:SIZES.full, minutes:SIZES.fullMinutes, back:"#netplus"});
+  document.getElementById("fullBtn").onclick = () => startExamForm({kind:"full", lock:"full", title:"Practice Network+ Exam", ids:UNITS.flatMap(unitIds), n:SIZES.full, minutes:SIZES.fullMinutes, back:"#netplus"});
 }
 
 function viewUnit(n){
@@ -514,7 +525,7 @@ function viewUnit(n){
       <ul class="subs">${subs.map(([sid, st]) => `<li><a href="#${toHash(sid)}"><span class="code">${sid}</span><span class="t">${esc(st)}</span>${pill(sid)}</a></li>`).join("")}</ul>
     </div>`).join("")}
   </section>`;
-  document.getElementById("unitBtn").onclick = () => startExamForm({kind:"unit", title:`Practice Unit ${n} Exam: ${u.title}`, ids, n:SIZES.unit, minutes:SIZES.unitMinutes, back:"#unit-"+n});
+  document.getElementById("unitBtn").onclick = () => startExamForm({kind:"unit", lock:"unit-"+n, title:`Practice Unit ${n} Exam: ${u.title}`, ids, n:SIZES.unit, minutes:SIZES.unitMinutes, back:"#unit-"+n});
 }
 
 function viewSub(id){
@@ -542,7 +553,7 @@ function viewSub(id){
     const qs = await pickQuestions([id], SIZES.subunit);
     beginQuiz({kind:"practice", title:label, qs, back:"#"+toHash(id)});
   };
-  document.getElementById("gradedBtn").onclick = () => startExamForm({kind:"graded", title:"Graded Test: " + label, ids:[id], n:SIZES.subunit, minutes:0, back:"#"+toHash(id)});
+  document.getElementById("gradedBtn").onclick = () => startExamForm({kind:"graded", lock:id, title:"Graded Test: " + label, ids:[id], n:SIZES.subunit, minutes:0, back:"#"+toHash(id)});
 }
 
 function viewOther(){
@@ -606,6 +617,7 @@ function startExamForm(cfg){
     <form class="form" id="who" novalidate>
       <div class="field"><label for="fname">Full name</label><input id="fname" name="fname" autocomplete="name" required><span class="err" id="fname-err"></span></div>
       <div class="field"><label for="femail">Email address</label><input id="femail" name="femail" type="email" autocomplete="email" required><span class="err" id="femail-err"></span></div>
+      <div class="field"><label for="fpass">Test password</label><input id="fpass" name="fpass" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" required><span class="err" id="fpass-err"></span><span style="color:var(--muted);font-size:14px">Your instructor provides this password to unlock the test.</span></div>
       <div class="row"><button class="btn btn-primary" type="submit">Begin</button><a class="btn btn-ghost" href="${cfg.back}">Cancel</a></div>
     </form>
   </section>`;
@@ -617,6 +629,9 @@ function startExamForm(cfg){
     let ok = true;
     document.getElementById("fname-err").textContent = name.length >= 2 ? "" : (ok=false, "Enter your full name.");
     document.getElementById("femail-err").textContent = /^[^\s@]+@jobcorps\.org$/i.test(email) ? "" : (ok=false, "Not an employee email address.");
+    const pass = document.getElementById("fpass").value.trim().toLowerCase();
+    const expected = LOCKS[cfg.lock];
+    if (expected) document.getElementById("fpass-err").textContent = pass === expected ? "" : (ok=false, "Incorrect test password. Ask your instructor.");
     if (!ok) return;
     const btn = e.submitter || e.target.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "Loading questions…";
     try {
@@ -633,12 +648,14 @@ function startExamForm(cfg){
 function stopQuiz(){
   if (quiz && quiz.timerId) clearInterval(quiz.timerId);
   document.body.classList.remove("exam-mode");
+  document.body.classList.remove("practice-mode");
   window.onbeforeunload = null;
   quiz = null;
 }
 function beginQuiz(cfg){
   quiz = {...cfg, answers:new Array(cfg.qs.length).fill(null), flags:new Set(), cur:0, state:"running", confirm:null, startedAt:Date.now(), filter:"all"};
   if (cfg.kind !== "practice") { document.body.classList.add("exam-mode"); window.onbeforeunload = () => true; }
+  else { document.body.classList.add("practice-mode"); }
   if (cfg.minutes) {
     quiz.endsAt = Date.now() + cfg.minutes*60000;
     quiz.timerId = setInterval(tick, 1000);
@@ -782,6 +799,7 @@ function renderResults(){
   </section>`;
   renderSendStatus();
   document.body.classList.remove("exam-mode");
+  document.body.classList.remove("practice-mode");
   $app.querySelectorAll("[data-f]").forEach(b => b.onclick = () => { z.filter = b.dataset.f; renderResults(); });
   document.getElementById("backBtn").onclick = e => { e.preventDefault(); const back = z.back; stopQuiz(); if (location.hash === back) route(); else location.hash = back; };
   const again = document.getElementById("again");
