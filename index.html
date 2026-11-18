@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Computer Technology Trade</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,6 +61,163 @@ body.exam-mode::before{background:#ffe600}
    Question cards keep their own surface color, so text stays readable in light and dark themes. */
 body.practice-mode{background:#1e90ff}
 body.practice-mode::before{background:#1e90ff}
+/* Congratulations banner + confetti shown when a graded test is passed */
+.celebrate{display:flex;gap:14px;align-items:center;background:linear-gradient(90deg,#e0f3e7,#eafff3);border:1px solid var(--good);border-radius:14px;padding:14px 18px;margin-bottom:18px;animation:celebpop .5s ease}
+.celebrate-emoji{font-size:34px;line-height:1}
+.celebrate-title{font-weight:800;font-size:18px;color:#13794a}
+.celebrate-sub{color:#2a6a4c;font-size:14px;margin-top:2px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .celebrate{background:rgba(23,128,74,.18)} :root:not([data-theme="light"]) .celebrate-title{color:#7ff0b4} :root:not([data-theme="light"]) .celebrate-sub{color:#b7e8cd}}
+:root[data-theme="dark"] .celebrate{background:rgba(23,128,74,.18)}:root[data-theme="dark"] .celebrate-title{color:#7ff0b4}:root[data-theme="dark"] .celebrate-sub{color:#b7e8cd}
+@keyframes celebpop{0%{transform:scale(.96);opacity:0}100%{transform:scale(1);opacity:1}}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999}
+/* Student accounts: nav auth, My Progress, identity banner */
+#navAuth{display:inline-flex;gap:4px;align-items:center;margin-left:6px}
+#navAuth a{font-family:var(--display);font-weight:600;font-size:15px;text-decoration:none;color:var(--muted);padding:7px 11px;border-radius:8px}
+#navAuth a:hover{color:var(--ink);background:var(--surface-2)}
+#navAuth a[aria-current="page"]{color:var(--accent);background:var(--accent-soft)}
+.pstats{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.statbox{display:flex;flex-direction:column;gap:2px;padding:14px 18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;min-width:150px}
+.snum{font-size:26px;font-weight:800}.snum small{font-size:15px;color:var(--muted);font-weight:600}
+.slab{color:var(--muted);font-size:13px}
+.prow{display:grid;grid-template-columns:220px 1fr 130px;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.prow:last-child{border-bottom:none}
+.pmeta b{display:block}.pmeta span{color:var(--muted);font-size:13px}
+.pbar{height:10px;background:var(--surface-2);border-radius:6px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--accent)}
+.pnum{text-align:right}.pnum b{font-size:18px}.pnum span{color:var(--muted);font-size:13px;margin-left:3px}
+.idbanner{background:var(--accent-soft);color:var(--ink);border-radius:10px;padding:10px 14px;font-size:14px;margin-bottom:4px}
+.idbanner span{color:var(--muted)}
+@media (max-width:640px){.prow{grid-template-columns:104px 1fr 84px}}
+/* Instructor dashboard */
+.hide{display:none}
+.ds-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:4px 0 20px}
+.ds-tile{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.ds-tile .k{font-size:12px;text-transform:uppercase;letter-spacing:.3px;color:var(--muted)}
+.ds-tile .v{font-size:26px;font-weight:800;margin-top:3px}.ds-tile .v small{font-size:14px;color:var(--muted);font-weight:600}
+.ds-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.ds-tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 15px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit}
+.ds-tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.ds-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.ds-table{width:100%;border-collapse:collapse;font-size:14px}
+.ds-table th{text-align:left;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.3px;padding:11px 12px;border-bottom:1px solid var(--line)}
+.ds-table td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+.ds-table tr:last-child td{border-bottom:none}
+.ds-name{font-weight:700}.ds-id{color:var(--muted);font-size:12px}.ds-mini{color:var(--muted);font-size:13px}
+.ds-pill{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.ds-pill.good{background:var(--good-soft);color:var(--good)}.ds-pill.mid{background:var(--warn-soft);color:var(--warn)}.ds-pill.low{background:var(--bad-soft);color:var(--bad)}
+/* Column chart: time on site per day */
+.cc{display:flex;gap:8px;align-items:flex-end;padding:10px 2px 0}
+.cc-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0}
+.cc-val{font-size:11px;font-weight:700;color:var(--ink);height:14px;line-height:14px}
+.cc-track{width:100%;max-width:46px;height:120px;display:flex;align-items:flex-end;background:linear-gradient(var(--line),var(--line)) no-repeat bottom/100% 1px}
+.cc-bar{width:100%;background:var(--accent);border-radius:6px 6px 0 0;min-height:3px}
+.cc-bar.cc-zero{background:var(--line);min-height:2px}
+.cc-x{font-size:11px;color:var(--muted);text-align:center;line-height:1.25;display:flex;flex-direction:column}
+.cc-x .cc-dm{font-size:10px;opacity:.75}
+.cc-cap{font-size:12px;color:var(--muted);margin:2px 2px 0;display:flex;justify-content:space-between}
+.ds-ubars{display:flex;gap:4px;align-items:flex-end;height:32px}
+.ds-ubar{width:14px;background:var(--surface-2);border-radius:3px 3px 0 0;height:30px;display:inline-flex;align-items:flex-end}
+.ds-ubar i{display:block;width:100%;background:var(--accent);border-radius:3px 3px 0 0}
+.ds-lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ds-lead{display:flex;align-items:center;gap:12px;padding:8px 2px;border-bottom:1px solid var(--line)}
+.ds-lead:last-child{border-bottom:none}
+.ds-rank{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;background:var(--surface-2);color:var(--muted)}
+.ds-rank.g1{background:#ffedb0;color:#8a6d1b}.ds-rank.g2{background:#e4e8ee;color:#5b6676}.ds-rank.g3{background:#f3dcc4;color:#8a5a2b}
+.ds-sel{padding:9px 12px;border:1px solid var(--line);border-radius:10px;font-size:14px;background:var(--surface);color:var(--ink);margin-top:4px}
+.ds-dstats{display:flex;gap:26px;flex-wrap:wrap}
+.ds-urow{display:grid;grid-template-columns:120px 1fr 90px;gap:12px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+.ds-urow:last-child{border-bottom:none}
+.ds-bar{height:9px;background:var(--surface-2);border-radius:6px;overflow:hidden}.ds-bar i{display:block;height:100%;background:var(--accent)}
+.ds-att{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+.ds-att:last-child{border-bottom:none}
+.pw-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.pw-row label{width:92px;font-weight:600;flex:none;color:var(--ink)}
+.pw-input{font-family:'Courier New',monospace;font-weight:700;flex:1}
+@media (max-width:720px){.ds-tiles{grid-template-columns:repeat(2,1fr)}.ds-lead-grid{grid-template-columns:1fr}}
+/* Dashboard: export + struggling flag */
+.ds-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.ds-toolbar .sp{margin-left:auto}
+.ds-alert{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border-radius:12px;border:1px solid var(--line);font-size:14px;margin-bottom:12px;line-height:1.45}
+.ds-alert.warn{background:var(--bad-soft);border-color:var(--bad)}
+.ds-alert.ok{background:var(--good-soft);border-color:var(--good)}
+.ds-alert span{font-size:16px;line-height:1.3;flex:none}
+.ds-flag{display:inline-block;margin-top:4px;font-size:11px;font-weight:700;color:var(--bad);background:var(--bad-soft);padding:2px 8px;border-radius:999px}
+.ds-flag.ns{color:var(--muted);background:var(--surface-2)}
+.ds-table tr.flagged td{background:var(--bad-soft)}
+.chk{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink);cursor:pointer}
+.chk input{width:16px;height:16px;accent-color:var(--accent)}
+/* Pre-test rules + acknowledgment */
+.examrules{background:var(--warn-soft);border:1px solid var(--warn);border-radius:14px;padding:16px 18px 14px;margin:0 0 16px}
+.examrules h2{margin:0 0 8px;font-size:17px;color:var(--ink)}
+.examrules ol{margin:0;padding-left:22px}
+.examrules li{margin-bottom:7px;font-size:14px;line-height:1.5;color:var(--ink)}
+.examrules li:last-of-type{margin-bottom:0}
+.examack{display:flex;align-items:flex-start;gap:9px;margin-top:13px;padding-top:12px;border-top:1px solid var(--warn);font-size:14px;font-weight:600;color:var(--ink);cursor:pointer}
+.examack input{width:18px;height:18px;accent-color:var(--accent);flex:none;margin-top:1px}
+/* Unit-page graded sub-unit picker */
+.gcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:16px}
+.gcard h2{margin:4px 0 4px;font-size:20px}
+.gcard > p{color:var(--muted);margin:0 0 10px}
+.gpick-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;margin:12px 0;max-height:330px;overflow:auto;padding:2px}
+.gpick-item{display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid var(--line);border-radius:10px;cursor:pointer;font-size:14px}
+.gpick-item:hover{background:var(--surface-2)}
+.gpick-item.on{border-color:var(--accent);background:var(--accent-soft)}
+.gpick-item input{width:17px;height:17px;accent-color:var(--accent);flex:none}
+.gpick-item .code{font-weight:700;color:var(--accent);flex:none}
+.gpick-item .t{color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gpick-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px}
+.gpick-item.passed{opacity:.6;cursor:not-allowed;background:var(--surface-2)}
+.gpick-item.passed .t{text-decoration:none}
+.passed-badge{margin-left:auto;font-size:11px;font-weight:700;color:var(--good);background:var(--good-soft);padding:2px 8px;border-radius:999px;flex:none;white-space:nowrap}
+.units-h{margin:22px 0 8px;font-size:16px}
+.modes.single{grid-template-columns:1fr;max-width:460px}
+.gnote{margin-top:16px;color:var(--muted)}
+/* Printable marked-test report */
+.report-wrap{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.rp-head{border-bottom:3px solid var(--accent);padding-bottom:10px;margin-bottom:14px}
+.rp-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;font-size:14px;margin-bottom:16px}
+.rp-grid .k{color:var(--muted)}
+.rp-q{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.rp-q.ok{background:var(--good-soft)}.rp-q.no{background:var(--bad-soft)}
+.rp-qt{font-weight:700;margin-bottom:7px}
+.rp-opt{padding:4px 8px;border-radius:7px;font-size:14px;display:flex;gap:8px;align-items:baseline}
+.rp-opt .k{font-weight:700;width:18px;flex:none}
+.rp-opt.chosen{outline:2px solid var(--bad);background:#fff}
+.rp-opt.correct{outline:2px solid var(--good);background:#fff}
+.rp-opt.chosen.correct{outline:2px solid var(--good)}
+.rp-tag{font-size:12px;font-weight:700;margin-top:6px}
+.rp-tag.right{color:var(--good)}.rp-tag.wrong{color:var(--bad)}
+.rp-mark{display:none}/* print-only label; on screen the colors carry this meaning */
+#reportOverlay{position:fixed;inset:0;background:rgba(13,23,38,.55);z-index:10000;overflow:auto;padding:28px 16px}
+.ro-inner{max-width:820px;margin:0 auto;background:var(--bg);border-radius:14px;padding:20px}
+/* Print rules come AFTER the overlay rules above so they win in print (media queries add no specificity) */
+@page{margin:14mm}
+@media print{
+  html,body{background:#fff}
+  header.topbar, #app, footer{display:none !important}
+  /* un-trap the report from the fixed, scrolling overlay so it flows across pages */
+  #reportOverlay{position:static;inset:auto;overflow:visible;background:none;padding:0;z-index:auto;display:block}
+  .ro-inner{max-width:none;margin:0;background:none;border-radius:0;padding:0;overflow:visible;box-shadow:none}
+  #reportPrint{position:static;left:auto;top:auto;width:100%;padding:0;overflow:visible}
+  .rp-noprint{display:none !important}
+  .report-wrap{border:none;border-radius:0;padding:0}
+  .rp-q{break-inside:avoid}
+  .ds-table thead{display:table-header-group}
+  .ds-table tr{break-inside:avoid}
+  /* ---- black & white: strip all color from the printout ---- */
+  #reportPrint, #reportPrint h1, .rp-head, .rp-grid, .rp-grid .k, .rp-qt, .rp-opt, .rp-tag,
+  .rp-tag.right, .rp-tag.wrong, .ds-table th, .ds-table td, .ds-mini{color:#000 !important}
+  .rp-head{border-bottom:2px solid #000 !important}
+  .rp-q{border:1px solid #000 !important;background:#fff !important}
+  .rp-q.ok, .rp-q.no{background:#fff !important}
+  .rp-opt{background:#fff !important}
+  .rp-opt.correct, .rp-opt.chosen.correct{outline:2px solid #000 !important}  /* correct answer: solid box */
+  .rp-opt.chosen{outline:2px dashed #000 !important}                           /* student's wrong pick: dashed box */
+  .rp-mark{display:inline !important;margin-left:auto;padding-left:10px;font-size:12px;font-weight:700;color:#000 !important;white-space:nowrap}
+  .ds-table thead th{background:#fff !important;border-bottom:2px solid #000 !important}
+  .ds-pill, .ds-flag, .ds-flag.ns{background:#fff !important;color:#000 !important;border:1px solid #000 !important}
+  .ds-alert, .ds-alert.warn, .ds-alert.ok{background:#fff !important;border:1px solid #000 !important;color:#000 !important}
+}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:.01em;border-radius:9px;padding:11px 18px;border:1px solid transparent;cursor:pointer;text-decoration:none;line-height:1.1}
@@ -253,6 +412,7 @@ body.exam-mode footer{display:none}
       <a href="#netplus" data-nav="netplus">Network+</a>
       <a href="#other" data-nav="other">Other Certifications</a>
       <a href="#resources" data-nav="resources">Resources</a>
+      <span id="navAuth"></span>
     </nav>
   </div>
 </header>
@@ -260,7 +420,7 @@ body.exam-mode footer{display:none}
 <main id="app"><div class="wrap loading">Loading…</div></main>
 
 <footer>
-  <div class="wrap">Computer Technology Trade. Practice questions on this site are original and written to the CompTIA Network+ N10-009 objectives. They are not actual CompTIA exam questions.</div>
+  <div class="wrap">Computer Technology Trade. Practice questions on this site are original and written to the CompTIA Network+ N10-009 objectives. They are not actual CompTIA exam questions. · <a href="#dashboard">Instructor</a></div>
 </footer>
 
 <script>
@@ -269,11 +429,14 @@ body.exam-mode footer{display:none}
    Web App URL between the quotes below.
    ============================================================ */
 const CONFIG = {
-  endpoint: ""
+  endpoint: "",      // (legacy) Apps Script EMAIL url — used only until the accounts backend is set
+  apiEndpoint: ""    // Apps Script DATA backend Web app url (/exec) — enables student accounts, progress, dashboard
 };
-const PASS_MARK = 80;
-const SIZES = { subunit: 30, unit: 60, unitMinutes: 60, full: 90, fullMinutes: 120 };
-const LOCKS = {"1.1":"tcp8613","1.1a":"fade143","1.1b":"cdn8794","1.1c":"pap5491","1.1d":"node442","1.1e":"ssl5643","1.1f":"loss247","1.1g":"snmp105","1.2":"pop5744","1.2a":"sip1907","1.2b":"tls7767","1.2c":"dmz8554","1.3":"acl2800","1.3a":"dhcp677","1.3b":"sfp5509","1.3c":"ospf425","1.3d":"hops315","1.3e":"isp8581","1.3f":"nat2288","1.3g":"wlan079","1.3h":"port656","1.3i":"man1485","1.3j":"ntp1842","1.4":"ftp4478","1.4a":"nfs5290","1.4b":"jack096","1.4c":"wpa8142","1.4d":"scsi978","1.4e":"coax304","1.4f":"api2923","1.4g":"eap5728","1.4h":"pdu4786","1.4i":"vip0938","1.4j":"nic7864","1.4k":"vpn1996","1.4l":"bgp1928","1.4m":"ttl2608","1.4n":"poe3373","1.4o":"stp4509","1.4p":"imap399","1.4q":"aaa8545","1.4r":"qos3830","1.4s":"vtp2279","1.4t":"lan1728","1.5":"isdn437","1.5a":"mac1732","1.5b":"pat7936","1.6":"cli0614","1.6a":"osi7922","1.6b":"sata414","1.6c":"wifi865","1.6d":"rip0030","1.7":"rack587","1.7a":"ips0503","1.7b":"igmp379","1.7c":"iot1705","1.8":"ssid657","1.8a":"rdp2768","1.8b":"tap6277","1.8c":"sdn8278","1.8d":"ids1681","1.8e":"vlan718","1.8f":"uefi310","1.9":"wan3982","1.9a":"ldap767","1.9b":"baud989","1.9c":"http385","1.9d":"gre1932","1.9e":"dns6176","1.9f":"pstn174","2.1":"icmp562","2.1a":"rfc6179","2.1b":"bios242","2.1c":"udp9439","2.1d":"hub4014","2.1e":"ssh0886","2.1f":"mesh015","2.1g":"gui6742","2.2":"mtu5763","2.2a":"arp0863","2.2b":"ping671","2.2c":"gain111","2.2d":"smb4912","2.3":"aes6590","2.3a":"tcp0593","2.3b":"fade166","2.3c":"cdn5046","2.3d":"pap3725","2.3e":"node979","2.3f":"ssl4538","2.3g":"loss160","2.3h":"snmp198","2.3i":"pop1254","2.4":"sip2579","2.4a":"tls4130","2.4b":"dmz4334","2.4c":"acl2059","3.1":"dhcp931","3.1a":"sfp2462","3.1b":"ospf667","3.1c":"hops570","3.1d":"isp6723","3.2":"nat9759","3.2a":"wlan840","3.2b":"port253","3.3":"man6018","3.3a":"ntp8833","3.3b":"ftp8282","3.3c":"nfs3196","3.3d":"jack282","3.4":"wpa1980","3.4a":"scsi252","3.4b":"coax902","3.4c":"api1659","3.5":"eap3789","3.5a":"pdu5924","3.5b":"vip8325","3.5c":"nic3115","3.5d":"vpn1357","3.5e":"bgp0101","4.1":"ttl6712","4.1a":"poe8398","4.1b":"stp5798","4.1c":"imap916","4.1d":"aaa6449","4.1e":"qos5763","4.1f":"vtp6517","4.2":"lan5340","4.2a":"isdn577","4.2b":"mac5057","4.2c":"pat8334","4.2d":"cli2576","4.2e":"osi9329","4.2f":"sata800","4.2g":"wifi816","4.2h":"rip9521","4.2i":"rack592","4.2j":"ips1902","4.2k":"igmp732","4.2l":"iot7277","4.2m":"ssid524","4.3":"rdp7522","4.3a":"tap6499","4.3b":"sdn5363","4.3c":"ids0007","4.3d":"vlan788","4.3e":"uefi984","5.1":"wan3818","5.1a":"ldap280","5.1b":"baud923","5.1c":"http376","5.1d":"gre2195","5.1e":"dns4640","5.1f":"pstn717","5.1g":"icmp302","5.2":"rfc9611","5.2a":"bios052","5.2b":"udp2521","5.2c":"hub5374","5.3":"ssh1212","5.3a":"mesh958","5.3b":"gui7605","5.3c":"mtu1551","5.3d":"arp8901","5.3e":"ping929","5.3f":"gain513","5.4":"smb5116","5.4a":"aes0770","5.4b":"tcp8027","5.4c":"fade220","5.4d":"cdn5239","5.4e":"pap8760","5.4f":"node763","5.4g":"ssl6082","5.5":"loss936","5.5a":"snmp572","5.5b":"pop5309","5.5c":"sip0087","unit-1":"tls1024","unit-2":"dmz1359","unit-3":"acl6227","unit-4":"dhcp866","unit-5":"sfp9308","full":"ospf872"};
+const PASS_MARK = 80;              // unit and full practice exams
+const PASS_MARK_SUBUNIT = 75;      // sub-unit tests: 15 of 20 correct
+function passMarkFor(kind){ return (kind === "unit" || kind === "full") ? PASS_MARK : PASS_MARK_SUBUNIT; }
+const SIZES = { subunit: 20, unit: 60, unitMinutes: 60, full: 90, fullMinutes: 120 };
+const LOCKS = {"unit-1": "osi079*","unit-2": "poe014!","unit-3": "dns854*","unit-4": "acl118@","unit-5": "arp295$","full": "tcp888*"};
 
 /* ---------- Syllabus: CompTIA Network+ N10-009 ---------- */
 const UNITS = [
@@ -437,6 +600,26 @@ async function pickQuestions(ids, n){
   banks.flat().forEach(it => { if (!seen.has(it.raw[0])) { seen.add(it.raw[0]); pool.push(it); } });
   return shuffle(pool).slice(0, n).map(makeQuestion);
 }
+/* Draw n questions spread as evenly as possible across several banks (for combined graded tests) */
+async function pickBalanced(ids, n){
+  const idx = await loadIndex();
+  const avail = ids.filter(id => idx[id]);
+  if (avail.length <= 1) return pickQuestions(ids, n);
+  const banks = await Promise.all(avail.map(loadBank));
+  const per = Math.floor(n / avail.length);
+  const seen = new Set(), chosen = [], leftover = [];
+  banks.forEach(bank => {
+    let takenFromBank = 0;
+    shuffle(bank).forEach(it => {
+      if (seen.has(it.raw[0])) return;
+      seen.add(it.raw[0]);
+      if (takenFromBank < per) { chosen.push(it); takenFromBank++; } else { leftover.push(it); }
+    });
+  });
+  const need = Math.max(0, n - chosen.length);
+  const final = chosen.concat(shuffle(leftover).slice(0, need));
+  return shuffle(final).slice(0, n).map(makeQuestion);
+}
 
 /* ---------- router ---------- */
 let quiz = null;
@@ -449,13 +632,466 @@ async function route(){
   const h = (location.hash || "#home").slice(1);
   window.scrollTo(0,0);
   await loadIndex();
+  updateNavAuth();
   if (h === "home" || h === "") return viewHome();
+  if (h === "signin") return viewSignIn();
+  if (h === "progress") return viewProgress();
+  if (h === "dashboard") return viewInstructor();
   if (h === "netplus") return viewNetplus();
   if (h === "other") return viewOther();
   if (h === "resources") return viewResources();
   const um = h.match(/^unit-([1-5])$/); if (um) return viewUnit(+um[1]);
   if (h.startsWith("su-") && NODE[fromHash(h)]) return viewSub(fromHash(h));
   viewHome();
+}
+
+/* ---------- Student accounts + data backend ---------- */
+let _jsonpN = 0;
+function api(action, params){
+  return new Promise(resolve => {
+    if (!CONFIG.apiEndpoint){ resolve({ok:false, error:"notset"}); return; }
+    const cb = "__cb" + (_jsonpN++);
+    const s = document.createElement("script");
+    const done = (data) => { clearTimeout(t); try { delete window[cb]; } catch(e){} if (s.parentNode) s.parentNode.removeChild(s); resolve(data); };
+    const t = setTimeout(() => done({ok:false, error:"timeout"}), 15000);
+    window[cb] = done;
+    s.onerror = () => done({ok:false, error:"network"});
+    const q = Object.assign({action, callback:cb}, params || {});
+    s.src = CONFIG.apiEndpoint + (CONFIG.apiEndpoint.indexOf("?") >= 0 ? "&" : "?") +
+      Object.keys(q).map(k => encodeURIComponent(k) + "=" + encodeURIComponent(q[k] == null ? "" : q[k])).join("&");
+    document.head.appendChild(s);
+  });
+}
+const Student = {
+  get(){ try { return JSON.parse(sessionStorage.getItem("ctt_student") || "null"); } catch(e){ return null; } },
+  set(v){ try { sessionStorage.setItem("ctt_student", JSON.stringify(v)); } catch(e){} },
+  clear(){ try { sessionStorage.removeItem("ctt_student"); } catch(e){} }
+};
+function updateNavAuth(){
+  const el = document.getElementById("navAuth"); if (!el) return;
+  const s = Student.get();
+  if (!CONFIG.apiEndpoint){ el.innerHTML = ""; return; }
+  el.innerHTML = s
+    ? `<a href="#progress" data-nav="progress">My Progress</a><a href="#" id="signoutLink">Sign out</a>`
+    : `<a href="#signin" data-nav="signin">Student sign in</a>`;
+  const so = document.getElementById("signoutLink");
+  if (so) so.onclick = (e) => { e.preventDefault(); Student.clear(); updateNavAuth(); location.hash = "#home"; };
+}
+function viewSignIn(intent){
+  setNav("signin");
+  const back = intent || "#progress";
+  $app.innerHTML = `
+  <section class="wrap page">
+    <div class="pagehead"><span class="eyebrow">Student access</span><h1>Sign in</h1><p>Use your student ID and PIN. First time here? Set up your PIN with the one-time code from your instructor.</p></div>
+    <div id="siNote" class="notice err" style="display:none;margin-bottom:14px"></div>
+    <form class="form" id="siForm" novalidate autocomplete="off">
+      <div class="field"><label for="siId">Student ID</label><input id="siId" autocomplete="off" required></div>
+      <div class="field"><label for="siPin">PIN</label><input id="siPin" type="text" inputmode="numeric" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-lpignore="true" style="-webkit-text-security:disc;text-security:disc" required></div>
+      <div class="row"><button class="btn btn-primary" type="submit">Sign in</button><button class="btn btn-ghost" type="button" id="toFirst">First time? Set up PIN</button></div>
+    </form>
+  </section>`;
+  const note = (m) => { const e = document.getElementById("siNote"); e.style.display = m ? "block" : "none"; e.textContent = m || ""; };
+  document.getElementById("siId").focus();
+  document.getElementById("toFirst").onclick = () => viewFirstLogin(back);
+  document.getElementById("siForm").addEventListener("submit", async e => {
+    e.preventDefault(); note("");
+    const id = document.getElementById("siId").value.trim();
+    const pin = document.getElementById("siPin").value.trim();
+    if (!id || !pin){ note("Enter your student ID and PIN."); return; }
+    const btn = e.submitter || e.target.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "Signing in…";
+    const r = await api("studentLogin", {id, pin});
+    btn.disabled = false; btn.textContent = "Sign in";
+    if (r.ok){ Student.set({token:r.token, id:r.id, name:r.name}); updateNavAuth(); location.hash = (back && back !== "#signin") ? back : "#progress"; }
+    else if (r.needSetup){ viewFirstLogin(back, "Set up your PIN first using your one-time code."); }
+    else note(r.error === "notset" ? "The site is not connected to the accounts backend yet." : (r.error || "Could not sign in."));
+  });
+}
+function viewFirstLogin(back, msg){
+  setNav("signin");
+  $app.innerHTML = `
+  <section class="wrap page">
+    <div class="pagehead"><span class="eyebrow">Student access</span><h1>Set up your PIN</h1><p>Enter your student ID, the one-time code from your instructor, and choose a 4–6 digit PIN you'll remember.</p></div>
+    <div id="flNote" class="notice err" style="display:${msg ? "block" : "none"};margin-bottom:14px">${msg ? esc(msg) : ""}</div>
+    <form class="form" id="flForm" novalidate autocomplete="off">
+      <div class="field"><label for="flId">Student ID</label><input id="flId" autocomplete="off" required></div>
+      <div class="field"><label for="flCode">One-time code</label><input id="flCode" autocomplete="off" autocapitalize="characters" required></div>
+      <div class="field"><label for="flPin">New PIN (4–6 digits)</label><input id="flPin" type="text" inputmode="numeric" autocomplete="off" style="-webkit-text-security:disc;text-security:disc" required></div>
+      <div class="field"><label for="flPin2">Confirm PIN</label><input id="flPin2" type="text" inputmode="numeric" autocomplete="off" style="-webkit-text-security:disc;text-security:disc" required></div>
+      <div class="row"><button class="btn btn-primary" type="submit">Set PIN & sign in</button><button class="btn btn-ghost" type="button" id="toLogin">Back to sign in</button></div>
+    </form>
+  </section>`;
+  const note = (m) => { const e = document.getElementById("flNote"); e.style.display = m ? "block" : "none"; e.textContent = m || ""; };
+  document.getElementById("flId").focus();
+  document.getElementById("toLogin").onclick = () => viewSignIn(back);
+  document.getElementById("flForm").addEventListener("submit", async e => {
+    e.preventDefault(); note("");
+    const id = document.getElementById("flId").value.trim();
+    const code = document.getElementById("flCode").value.trim();
+    const pin = document.getElementById("flPin").value.trim();
+    const pin2 = document.getElementById("flPin2").value.trim();
+    if (!/^[0-9]{4,6}$/.test(pin)){ note("PIN must be 4 to 6 digits."); return; }
+    if (pin !== pin2){ note("The two PINs do not match."); return; }
+    const btn = e.submitter || e.target.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "Setting up…";
+    const r = await api("firstLogin", {id, code, pin});
+    btn.disabled = false; btn.textContent = "Set PIN & sign in";
+    if (r.ok){ Student.set({token:r.token, id:r.id, name:r.name}); updateNavAuth(); location.hash = (back && back !== "#signin") ? back : "#progress"; }
+    else note(r.error || "Could not set up your PIN.");
+  });
+}
+async function viewProgress(){
+  setNav("progress");
+  const s = Student.get();
+  if (!s) return viewSignIn("#progress");
+  $app.innerHTML = `<section class="wrap page"><div class="pagehead"><span class="eyebrow">Your progress</span><h1>${esc(s.name || "My progress")}</h1><p>Loading your results…</p></div></section>`;
+  const r = await api("progress", {token:s.token});
+  if (!r.ok){
+    if (r.error === "notset"){ $app.querySelector(".pagehead p").textContent = "The accounts backend is not connected yet."; return; }
+    Student.clear(); updateNavAuth(); return viewSignIn("#progress");
+  }
+  const p = r.progress, ov = p.overall;
+  const rows = p.units.map(u => {
+    const pct = u.subTotal ? Math.round(u.subPassed / u.subTotal * 100) : 0;
+    return `<div class="prow"><div class="pmeta"><b>Unit ${esc(u.unit)}</b><span>${esc(u.title)}</span></div>
+      <div class="pbar"><i style="width:${pct}%"></i></div>
+      <div class="pnum"><b>${u.subPassed}</b><span>/${u.subTotal} passed</span></div></div>`;
+  }).join("");
+  $app.innerHTML = `
+  <section class="wrap page">
+    <div class="pagehead"><span class="eyebrow">Your progress</span><h1>${esc(s.name || "My progress")}</h1><p>Student ID ${esc(s.id)}</p></div>
+    <div class="pstats">
+      <div class="statbox"><span class="snum">${ov.avgGraded}%</span><span class="slab">Graded average</span></div>
+      <div class="statbox"><span class="snum">${ov.subPassed}<small>/${ov.subTotal}</small></span><span class="slab">Sub-units passed</span></div>
+      <div class="statbox"><span class="snum">${ov.gradedAttempts}</span><span class="slab">Graded tests taken</span></div>
+      <div class="statbox"><span class="snum">${fmtMin(r.weekMinutes||0)}</span><span class="slab">Time this week</span></div>
+    </div>
+    <div class="card" style="padding:4px 18px">${rows}</div>
+    ${(r.week && r.week.length) ? `<h2 class="units-h">Time on site this week</h2>
+      <div class="card" style="padding:14px 18px 16px">${colChart(r.week)}</div>` : ""}
+    <div class="row" style="margin-top:18px"><a class="btn btn-primary" href="#netplus">Go to practice</a></div>
+  </section>`;
+}
+async function saveToBackend(z){
+  const s = Student.get(); if (!s) return "notset";
+  let unit = "", subunit = "";
+  if (z.kind === "graded"){
+    const subs = z.subunits || (z.ids ? z.ids.slice() : []);
+    subunit = subs.join("+");
+    unit = String(subs[0] || "").split(".")[0];
+  } else if (z.kind === "unit"){ unit = String(z.lock || "").replace("unit-", ""); }
+  const attemptId = "A" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  const r = await api("saveAttempt", {
+    token: s.token, attemptId, kind: z.kind, unit: unit, subunit: subunit, title: z.title,
+    correct: z.correct, total: z.total, percent: z.percent, passed: z.passed,
+    passMark: z.passMark, durationSec: Math.round((z.finishedAt - z.startedAt) / 1000)
+  });
+  // Send the marked detail (question-by-question) for the instructor's PDF report — fire-and-forget POST
+  if (r.ok){
+    const items = z.qs.map((q, i) => ({ n: i+1, q: q.q, options: q.opts, chosen: z.answers[i], correct: q.ans, ok: z.answers[i] === q.ans }));
+    try {
+      fetch(CONFIG.apiEndpoint, { method: "POST", mode: "no-cors", headers: {"Content-Type": "text/plain;charset=utf-8"},
+        body: JSON.stringify({ action: "saveDetail", token: s.token, attemptId, items }) });
+    } catch(e){}
+  }
+  return r.ok ? "saved" : (r.error === "notset" ? "notset" : "failed");
+}
+
+/* ---------- activity heartbeat (time on site) ---------- */
+(function(){
+  const IDLE_MS = 90000;            // stop counting after 90s with no interaction
+  let last = Date.now(), lastAct = Date.now(), accMs = 0;
+  function accumulate(){
+    const now = Date.now();
+    if (!document.hidden && (now - lastAct) < IDLE_MS) accMs += now - last;
+    last = now;
+  }
+  function flush(){
+    accumulate();
+    const s = Student.get(); const secs = Math.round(accMs / 1000);
+    if (s && CONFIG.apiEndpoint && secs >= 5){ accMs = 0; api("heartbeat", {token:s.token, seconds:Math.min(180, secs)}); }
+  }
+  ["mousemove","keydown","click","scroll","touchstart"].forEach(ev => window.addEventListener(ev, () => { lastAct = Date.now(); }, {passive:true}));
+  document.addEventListener("visibilitychange", () => { accumulate(); if (document.hidden) flush(); else last = Date.now(); });
+  window.addEventListener("pagehide", flush);
+  setInterval(accumulate, 15000);
+  setInterval(flush, 60000);
+})();
+
+/* ---------- Instructor dashboard ---------- */
+const Instr = {
+  get(){ try { return JSON.parse(sessionStorage.getItem("ctt_instr") || "null"); } catch(e){ return null; } },
+  set(v){ try { sessionStorage.setItem("ctt_instr", JSON.stringify(v)); } catch(e){} },
+  clear(){ try { sessionStorage.removeItem("ctt_instr"); } catch(e){} }
+};
+function viewInstructor(){ setNav(""); return Instr.get() ? renderDashboard() : instrLoginForm(); }
+function instrLoginForm(msg){
+  setNav("");
+  $app.innerHTML = `
+  <section class="wrap page">
+    <div class="pagehead"><span class="eyebrow">Instructor</span><h1>Instructor sign in</h1><p>Enter your dashboard passphrase.</p></div>
+    <div id="inNote" class="notice err" style="display:${msg ? "block" : "none"};margin-bottom:14px">${msg ? esc(msg) : ""}</div>
+    <form class="form" id="inForm" novalidate autocomplete="off" style="max-width:440px">
+      <div class="field"><label for="inPass">Passphrase</label><input id="inPass" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-lpignore="true" style="-webkit-text-security:disc;text-security:disc" required></div>
+      <div class="row"><button class="btn btn-primary" type="submit">Sign in</button><a class="btn btn-ghost" href="#home">Cancel</a></div>
+    </form>
+  </section>`;
+  const note = (m) => { const e = document.getElementById("inNote"); e.style.display = m ? "block" : "none"; e.textContent = m || ""; };
+  document.getElementById("inPass").focus();
+  document.getElementById("inForm").addEventListener("submit", async e => {
+    e.preventDefault(); note("");
+    const pass = document.getElementById("inPass").value;
+    const btn = e.submitter || e.target.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "Signing in…";
+    const r = await api("instrLogin", {pass});
+    btn.disabled = false; btn.textContent = "Sign in";
+    if (r.ok){ Instr.set({token:r.token}); document.getElementById("inPass").value = ""; renderDashboard(); }
+    else note(r.error === "notset" ? "The accounts backend is not connected yet." : (r.error || "Could not sign in."));
+  });
+}
+const fmtMin = m => (m >= 60 ? Math.floor(m/60) + "h " + (m%60) + "m" : (m||0) + "m");
+const gradeCls = p => p >= 85 ? "good" : p >= 70 ? "mid" : "low";
+const PASS_LINE = 75; // graded floor; students with a graded attempt below this are flagged
+const statusOf = s => (s.gradedAttempts>0) ? (s.avgGraded < PASS_LINE ? "below" : "ontrack") : "notstarted";
+function colChart(series){
+  series = series || [];
+  const max = Math.max(1, ...series.map(d => d.minutes||0));
+  const total = series.reduce((a,d)=>a+(d.minutes||0),0);
+  const cols = series.map(d => { const m = d.minutes||0; const h = m ? Math.max(4, Math.round(m/max*100)) : 0;
+    return `<div class="cc-col" title="${esc(d.label||"")} ${esc(d.dm||"")}: ${m} min">
+      <div class="cc-val">${m||""}</div>
+      <div class="cc-track"><div class="cc-bar${m?'':' cc-zero'}" style="height:${h}%"></div></div>
+      <div class="cc-x"><span>${esc(d.label||"")}</span><span class="cc-dm">${esc(d.dm||"")}</span></div></div>`; }).join("");
+  return `<div class="cc">${cols}</div><div class="cc-cap"><span>Minutes per day</span><span>${fmtMin(total)} total</span></div>`;
+}
+async function renderDashboard(){
+  setNav("");
+  const it = Instr.get(); if (!it) return instrLoginForm();
+  $app.innerHTML = `<section class="wrap page"><div class="pagehead"><span class="eyebrow">Instructor</span><h1>Class dashboard</h1><p>Loading…</p></div></section>`;
+  const cp = await api("classProgress", {token:it.token});
+  if (!cp.ok){
+    if (cp.error === "notset"){ $app.querySelector(".pagehead p").textContent = "The accounts backend is not connected yet."; return; }
+    Instr.clear(); return instrLoginForm("Session expired. Please sign in again.");
+  }
+  const lb = await api("leaderboard", {token:it.token});
+  const studs = cp.students || [];
+  const n = studs.length;
+  const avg = n ? Math.round(studs.reduce((a,s)=>a+s.avgGraded,0)/n) : 0;
+  const passed = studs.reduce((a,s)=>a+s.subPassed,0);
+  const subEach = studs[0] ? studs[0].subTotal : 178;
+  const avgMin = n ? Math.round(studs.reduce((a,s)=>a+(s.weekMinutes||0),0)/n) : 0;
+  const uBars = s => (s.units||[]).map(u => { const h = u.subTotal ? Math.round(u.subPassed/u.subTotal*28)+2 : 2;
+    return `<span class="ds-ubar" title="Unit ${u.unit}: ${u.subPassed}/${u.subTotal}"><i style="height:${h}px"></i></span>`; }).join("");
+  const flagBadge = st => st==="below" ? `<div class="ds-flag">⚠ Below pass line</div>` : st==="notstarted" ? `<div class="ds-flag ns">Not started</div>` : "";
+  const belowList = studs.filter(s => statusOf(s)==="below");
+  const nsList = studs.filter(s => statusOf(s)==="notstarted");
+  const rows = studs.map(s => { const st = statusOf(s); return `<tr data-st="${st}" class="${st==='below'?'flagged':''}">
+    <td><div class="ds-name">${esc(s.name||s.id)}</div><div class="ds-id">${esc(s.id)}</div>${flagBadge(st)}</td>
+    <td>${s.gradedAttempts>0 ? `<span class="ds-pill ${gradeCls(s.avgGraded)}">${s.avgGraded}%</span>` : `<span class="ds-mini">—</span>`}</td>
+    <td><div class="ds-ubars">${uBars(s)}</div></td>
+    <td><b>${s.subPassed}</b> <span class="ds-mini">/ ${s.subTotal}</span></td>
+    <td>${fmtMin(s.weekMinutes)}</td></tr>`; }).join("");
+  const dsAlert = belowList.length
+    ? `<div class="ds-alert warn"><span>⚠</span><div><b>${belowList.length} student${belowList.length===1?"":"s"} below the ${PASS_LINE}% pass line:</b> ${belowList.map(s=>esc(s.name||s.id)).join(", ")}${nsList.length?` · <span class="ds-mini">${nsList.length} not started</span>`:""}</div></div>`
+    : `<div class="ds-alert ok"><span>✓</span><div>Every student with a graded attempt is at or above the ${PASS_LINE}% pass line.${nsList.length?` <span class="ds-mini">(${nsList.length} not started)</span>`:""}</div></div>`;
+  const leadRow = (s,i,val) => `<div class="ds-lead"><span class="ds-rank ${i<3?'g'+(i+1):''}">${i+1}</span>
+    <div style="flex:1"><div class="ds-name" style="font-size:14px">${esc(s.name||s.id)}</div><div class="ds-id">${esc(s.id)}</div></div>
+    <div style="font-weight:800">${val}</div></div>`;
+  const byScore = (lb.ok?lb.byScore:[]).slice(0,10).map((s,i)=>leadRow(s,i,s.avgGraded+"%")).join("");
+  const byTime = (lb.ok?lb.byTime:[]).slice(0,10).map((s,i)=>leadRow(s,i,fmtMin(s.weekMinutes))).join("");
+  const opts = studs.map(s => `<option value="${esc(s.id)}">${esc(s.name||s.id)} (${esc(s.id)})</option>`).join("");
+  $app.innerHTML = `
+  <section class="wrap page">
+    <div class="pagehead" style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
+      <div><span class="eyebrow">Instructor</span><h1>Class dashboard</h1><p>${n} active student${n===1?"":"s"}</p></div>
+      <a href="#" id="instrOut" class="btn btn-ghost">Sign out</a>
+    </div>
+    <div class="ds-tiles">
+      <div class="ds-tile"><div class="k">Active students</div><div class="v">${n}</div></div>
+      <div class="ds-tile"><div class="k">Class graded average</div><div class="v">${avg}%</div></div>
+      <div class="ds-tile"><div class="k">Sub-units passed</div><div class="v">${passed}<small>/${subEach*n}</small></div></div>
+      <div class="ds-tile"><div class="k">Avg time this week</div><div class="v">${fmtMin(avgMin)}</div></div>
+    </div>
+    <div class="ds-tabs">
+      <button class="ds-tab" data-dtab="overview" aria-selected="true">Class overview</button>
+      <button class="ds-tab" data-dtab="leader" aria-selected="false">Leaderboard</button>
+      <button class="ds-tab" data-dtab="student" aria-selected="false">Student view</button>
+      <button class="ds-tab" data-dtab="passwords" aria-selected="false">Passwords</button>
+    </div>
+    <div id="ds-overview">
+      ${dsAlert}
+      <div class="ds-toolbar">
+        <label class="chk"><input type="checkbox" id="dsOnlyFlag"> Show only students needing attention</label>
+        <span class="sp"></span>
+        <button class="btn btn-ghost btn-sm" id="dsCsv" type="button">⬇ Download CSV</button>
+        <button class="btn btn-ghost btn-sm" id="dsPrint" type="button">🖨 Printable report</button>
+      </div>
+      <div class="ds-card"><table class="ds-table"><thead><tr><th>Student</th><th>Graded avg</th><th>Units 1–5</th><th>Sub-units passed</th><th>This week</th></tr></thead>
+        <tbody>${rows || `<tr><td colspan="5" class="ds-mini" style="padding:16px">No attempts recorded yet.</td></tr>`}</tbody></table></div>
+    </div>
+    <div id="ds-leader" class="hide">
+      <div class="ds-lead-grid">
+        <div class="ds-card" style="padding:14px 18px"><h3 style="margin:4px 0 8px">🏅 Top graded performance</h3>${byScore || '<div class="ds-mini">No data yet.</div>'}</div>
+        <div class="ds-card" style="padding:14px 18px"><h3 style="margin:4px 0 8px">⏱️ Most time this week</h3>${byTime || '<div class="ds-mini">No data yet.</div>'}</div>
+      </div>
+    </div>
+    <div id="ds-student" class="hide">
+      <div class="ds-card" style="padding:16px 18px">
+        <div style="margin-bottom:10px"><label class="ds-mini" for="dsPick">Student</label><br><select id="dsPick" class="ds-sel">${opts}</select></div>
+        <div id="dsDetail" class="ds-mini">Select a student.</div>
+      </div>
+    </div>
+    <div id="ds-passwords" class="hide">
+      <div class="ds-card" style="padding:16px 18px;max-width:640px">
+        <h3 style="margin:2px 0 4px">Test passwords</h3>
+        <p class="ds-mini" style="margin-bottom:12px">One password per unit unlocks its graded sub-unit tests and its unit exam; the full exam has its own. Changes save to the backend and take effect for students right away — nothing to re-upload. Recommended format: 3 letters + 3 numbers + 1 symbol.</p>
+        <div id="pwRows" class="ds-mini">Loading…</div>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:12px"><span id="pwMsg" class="ds-mini" style="margin-right:auto"></span><button class="btn btn-primary" id="pwSave">Save passwords</button></div>
+      </div>
+    </div>
+  </section>`;
+  document.getElementById("instrOut").onclick = (e) => { e.preventDefault(); Instr.clear(); location.hash = "#home"; };
+  let pwLoaded = false;
+  $app.querySelectorAll(".ds-tab").forEach(t => t.onclick = () => {
+    $app.querySelectorAll(".ds-tab").forEach(x => x.setAttribute("aria-selected", x === t));
+    ["overview","leader","student","passwords"].forEach(nm => document.getElementById("ds-"+nm).classList.toggle("hide", nm !== t.dataset.dtab));
+    if (t.dataset.dtab === "passwords" && !pwLoaded){ pwLoaded = true; loadPasswords(); }
+  });
+  const dsCsvBtn = document.getElementById("dsCsv"); if (dsCsvBtn) dsCsvBtn.onclick = () => dsExportCsv(studs);
+  const dsPrintBtn = document.getElementById("dsPrint"); if (dsPrintBtn) dsPrintBtn.onclick = () => printClassReport(studs, {n:n, avg:avg, below:belowList.length, ns:nsList.length});
+  const dsOnly = document.getElementById("dsOnlyFlag"); if (dsOnly) dsOnly.onclick = () => { const only = dsOnly.checked;
+    $app.querySelectorAll('#ds-overview tbody tr[data-st]').forEach(tr => { tr.style.display = (only && tr.dataset.st === 'ontrack') ? 'none' : ''; }); };
+  const PW_LABELS = {"unit-1":"Unit 1","unit-2":"Unit 2","unit-3":"Unit 3","unit-4":"Unit 4","unit-5":"Unit 5","full":"Full exam"};
+  function genPw(){ const w=["lan","dns","arp","tcp","osi","acl","poe","vpn","nat","mac"], sy="!@#$%&*?"; const r=a=>a[Math.floor(Math.random()*a.length)]; let p=r(w); for(let i=0;i<3;i++) p+=Math.floor(Math.random()*10); return p+r(sy); }
+  async function loadPasswords(){
+    const host = document.getElementById("pwRows");
+    const r = await api("passwords", {token: it.token});
+    if (!r.ok){ host.textContent = r.error === "notset" ? "Not connected to the backend yet." : "Could not load passwords."; return; }
+    host.innerHTML = Object.keys(PW_LABELS).map(k => `<div class="pw-row"><label>${PW_LABELS[k]}</label><input class="ds-sel pw-input" data-k="${k}" value="${esc(r.passwords[k]||"")}" maxlength="40" autocomplete="off" spellcheck="false"><button class="btn btn-ghost btn-sm pw-gen" data-k="${k}" type="button">Generate</button></div>`).join("");
+    host.querySelectorAll(".pw-gen").forEach(b => b.onclick = () => { host.querySelector(`.pw-input[data-k="${b.dataset.k}"]`).value = genPw(); });
+  }
+  document.getElementById("pwSave").onclick = async () => {
+    const msg = document.getElementById("pwMsg");
+    const data = {}; document.querySelectorAll(".pw-input").forEach(i => data[i.dataset.k] = i.value.trim());
+    if (Object.values(data).some(v => v.length < 4)){ msg.textContent = "Each password must be at least 4 characters."; return; }
+    msg.textContent = "Saving…";
+    const r = await api("setPasswords", {token: it.token, data: JSON.stringify(data)});
+    msg.textContent = r.ok ? "Saved — new passwords are live for students." : (r.error || "Could not save.");
+  };
+  const pick = document.getElementById("dsPick");
+  async function loadDetail(){
+    const d = document.getElementById("dsDetail"); d.textContent = "Loading…";
+    const r = await api("studentDetail", {token:it.token, id:pick.value});
+    if (!r.ok){ d.textContent = "Could not load this student."; return; }
+    const pr = r.progress, ov = pr.overall;
+    const bars = pr.units.map(u => { const pc = u.subTotal ? Math.round(u.subPassed/u.subTotal*100) : 0;
+      return `<div class="ds-urow"><div><b>Unit ${esc(u.unit)}</b></div><div class="ds-bar"><i style="width:${pc}%"></i></div><div style="text-align:right"><b>${u.subPassed}</b><span class="ds-mini">/${u.subTotal}</span></div></div>`; }).join("");
+    const recent = (r.recent||[]).map(a => `<div class="ds-att"><span>${esc(a.title || a.subunit || a.kind)}</span><span style="display:flex;align-items:center;gap:10px"><span class="ds-pill ${a.passed?'good':'low'}" style="font-size:11px">${a.percent}% ${a.passed?'Pass':'Retake'}</span>${a.attemptId ? `<button class="btn btn-ghost btn-sm" data-report="${esc(a.attemptId)}">View / PDF</button>` : ''}</span></div>`).join("") || '<div class="ds-mini">No attempts yet.</div>';
+    d.innerHTML = `<div class="ds-dstats">
+      <div><div class="ds-mini">Graded avg</div><div style="font-size:22px;font-weight:800">${ov.avgGraded}%</div></div>
+      <div><div class="ds-mini">Sub-units passed</div><div style="font-size:22px;font-weight:800">${ov.subPassed}<span class="ds-mini">/${ov.subTotal}</span></div></div>
+      <div><div class="ds-mini">Graded tests</div><div style="font-size:22px;font-weight:800">${ov.gradedAttempts}</div></div></div>
+      <div style="margin-top:12px">${bars}</div>
+      ${(r.daily && r.daily.length) ? `<h3 style="font-size:15px;margin:18px 0 6px">Time on site — last 10 weekdays</h3>
+        <div class="ds-card" style="padding:12px 14px 14px">${colChart(r.daily)}</div>` : ""}
+      <h3 style="font-size:15px;margin:16px 0 6px">Recent attempts</h3>${recent}`;
+    d.querySelectorAll("[data-report]").forEach(b => b.onclick = () => openAttemptReport(b.getAttribute("data-report")));
+  }
+  pick.onchange = loadDetail; if (studs.length) loadDetail();
+}
+
+async function openAttemptReport(attemptId){
+  const it = Instr.get(); if (!it) return;
+  let ov = document.getElementById("reportOverlay"); if (ov) ov.remove();
+  ov = document.createElement("div"); ov.id = "reportOverlay";
+  ov.innerHTML = `<div class="ro-inner"><div id="reportPrint"><p class="ds-mini">Loading report…</p></div></div>`;
+  document.body.appendChild(ov);
+  ov.onclick = (e) => { if (e.target === ov) ov.remove(); };
+  const r = await api("attemptReport", {token: it.token, attemptId});
+  const host = document.getElementById("reportPrint");
+  if (!r.ok || !r.summary){ host.innerHTML = `<div class="report-wrap"><p>Could not load this report.</p></div><div class="rp-noprint" style="text-align:right;margin-top:12px"><button class="btn btn-ghost" id="roClose">Close</button></div>`;
+    document.getElementById("roClose").onclick = () => ov.remove(); return; }
+  const s = r.summary, when = s.ts ? new Date(s.ts).toLocaleString() : "";
+  const qhtml = (r.items||[]).map(q => {
+    const opts = (q.options||[]).map((o,i) => {
+      const isC = q.correct===i, isX = q.chosen===i;
+      const cls = (isX ? " chosen" : "") + (isC ? " correct" : "");
+      const mk = (isC && isX) ? "✓ correct — student's answer" : isC ? "✓ correct answer" : isX ? "✗ student's answer" : "";
+      const mark = mk ? `<span class="rp-mark">${mk}</span>` : "";
+      return `<div class="rp-opt${cls}"><span class="k">${LETTERS[i]}</span><span>${esc(o)}</span>${mark}</div>`;
+    }).join("");
+    const tag = q.ok ? `<div class="rp-tag right">✓ Correct</div>` : `<div class="rp-tag wrong">✗ Incorrect${q.chosen==null ? " — no answer" : ""}</div>`;
+    return `<div class="rp-q ${q.ok?'ok':'no'}"><div class="rp-qt">${q.n}. ${esc(q.q)}</div>${opts}${tag}</div>`;
+  }).join("");
+  host.innerHTML = `
+    <div class="report-wrap">
+      <div class="rp-head"><div class="ds-mini">CTT · Computer Technology Trade — Graded Test Report</div>
+        <h1 style="margin:4px 0 2px;font-size:24px">${esc(r.name || s.studentId)}</h1>
+        <div class="ds-mini">${esc(s.title || '')}</div></div>
+      <div class="rp-grid">
+        <div><span class="k">Student ID:</span> ${esc(s.studentId)}</div>
+        <div><span class="k">Grade:</span> <b>${s.percent}% · ${s.passed ? 'PASSED' : 'NOT PASSED'}</b></div>
+        <div><span class="k">Score:</span> ${s.correct} of ${s.total} correct</div>
+        <div><span class="k">Pass mark:</span> ${s.passMark}%</div>
+        <div><span class="k">Completed:</span> ${esc(when)}</div>
+        <div><span class="k">Sub-unit(s):</span> ${esc(String(s.subunit||'').replace(/\+/g,' + '))}</div>
+      </div>
+      ${qhtml || '<p class="ds-mini">Question-by-question detail was not stored for this attempt.</p>'}
+    </div>
+    <div class="rp-noprint" style="display:flex;gap:10px;margin-top:14px;justify-content:flex-end">
+      <button class="btn btn-ghost" id="roClose">Close</button>
+      <button class="btn btn-primary" id="roPrint">Print / Save as PDF</button>
+    </div>`;
+  document.getElementById("roClose").onclick = () => ov.remove();
+  document.getElementById("roPrint").onclick = () => window.print();
+}
+
+/* ---------- instructor: class export + printable report ---------- */
+const ST_TEXT = {below:"Below pass line", ontrack:"On track", notstarted:"Not started"};
+function csvCell(v){ v = String(v==null?"":v); return /[",\n\r]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; }
+function dsExportCsv(studs){
+  const head = ["Student Name","Student ID","Status","Graded Avg %","Graded Attempts","Sub-units Passed","Sub-units Total","Unit 1","Unit 2","Unit 3","Unit 4","Unit 5","Time This Week (min)"];
+  const lines = [head.map(csvCell).join(",")];
+  studs.forEach(s => { const st = statusOf(s); const uv = {}; (s.units||[]).forEach(u => uv[u.unit] = u.subPassed+"/"+u.subTotal);
+    lines.push([s.name||s.id, s.id, ST_TEXT[st], (s.gradedAttempts>0?s.avgGraded:""), s.gradedAttempts||0, s.subPassed, s.subTotal,
+      uv[1]||"0/0", uv[2]||"0/0", uv[3]||"0/0", uv[4]||"0/0", uv[5]||"0/0", s.weekMinutes||0].map(csvCell).join(","));
+  });
+  const stamp = new Date().toISOString().slice(0,10);
+  const blob = new Blob(["﻿"+lines.join("\r\n")], {type:"text/csv;charset=utf-8"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+  a.download = "CTT_Class_Progress_"+stamp+".csv"; document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+function printClassReport(studs, meta){
+  let ov = document.getElementById("reportOverlay"); if (ov) ov.remove();
+  ov = document.createElement("div"); ov.id = "reportOverlay";
+  ov.innerHTML = `<div class="ro-inner"><div id="reportPrint"></div></div>`;
+  document.body.appendChild(ov);
+  ov.onclick = (e) => { if (e.target === ov) ov.remove(); };
+  const when = new Date().toLocaleString();
+  const rows = studs.map(s => { const st = statusOf(s);
+    return `<tr><td>${esc(s.name||s.id)}<div class="ds-id">${esc(s.id)}</div></td>
+      <td>${st==="below"?"⚠ ":""}${ST_TEXT[st]}</td>
+      <td style="text-align:center">${s.gradedAttempts>0?s.avgGraded+"%":"—"}</td>
+      <td style="text-align:center">${s.subPassed}/${s.subTotal}</td>
+      <td style="text-align:center">${fmtMin(s.weekMinutes)}</td></tr>`; }).join("");
+  document.getElementById("reportPrint").innerHTML = `
+    <div class="report-wrap">
+      <div class="rp-head"><div class="ds-mini">CTT · Computer Technology Trade — Class Progress Report</div>
+        <h1 style="margin:4px 0 2px;font-size:24px">Class Progress</h1>
+        <div class="ds-mini">Generated ${esc(when)}</div></div>
+      <div class="rp-grid">
+        <div><span class="k">Active students:</span> ${meta.n}</div>
+        <div><span class="k">Class graded average:</span> ${meta.avg}%</div>
+        <div><span class="k">Below pass line:</span> ${meta.below}</div>
+        <div><span class="k">Not started:</span> ${meta.ns}</div>
+      </div>
+      <table class="ds-table"><thead><tr><th>Student</th><th>Status</th><th>Graded avg</th><th>Sub-units</th><th>This week</th></tr></thead>
+        <tbody>${rows || '<tr><td colspan="5" class="ds-mini">No students yet.</td></tr>'}</tbody></table>
+    </div>
+    <div class="rp-noprint" style="display:flex;gap:10px;margin-top:14px;justify-content:flex-end">
+      <button class="btn btn-ghost" id="roClose2" type="button">Close</button>
+      <button class="btn btn-primary" id="roPrint2" type="button">Print / Save as PDF</button>
+    </div>`;
+  document.getElementById("roClose2").onclick = () => ov.remove();
+  document.getElementById("roPrint2").onclick = () => window.print();
 }
 
 /* ---------- views ---------- */
@@ -487,7 +1123,7 @@ function viewNetplus(){
   $app.innerHTML = `
   <section class="wrap page">
     <div class="pagehead"><span class="eyebrow">CompTIA Network+ · N10-009</span><h1>Network+ Certification</h1>
-      <p>Choose a unit to practice its sub-units, or take the full practice exam drawn from every question bank. Passing score on this site is ${PASS_MARK}%.</p></div>
+      <p>Choose a unit to practice its sub-units, or take the full practice exam drawn from every question bank. Passing score is ${PASS_MARK_SUBUNIT}% on sub-unit tests and ${PASS_MARK}% on unit and full exams.</p></div>
     <div class="exam-card">
       <div class="txt"><h2>Practice Network+ Exam</h2><p>Questions drawn at random from all sub-unit banks across all five units. Your grade is sent to your instructor.</p>
         <div class="specs"><span>${SIZES.full} questions</span><span>${SIZES.fullMinutes} minutes</span><span>Pass ${PASS_MARK}%</span><span>${total.toLocaleString()} questions in the banks</span></div></div>
@@ -510,15 +1146,29 @@ function viewUnit(n){
   setNav("netplus");
   const u = UNITS[n-1], ids = unitIds(u), ready = ids.filter(id=>INDEX[id]).length;
   const pill = id => INDEX[id] ? `<span class="pill ready">${INDEX[id]} Qs</span>` : `<span class="pill">Coming soon</span>`;
+  const gradeable = [];
+  u.objs.forEach(([oid, ot, subs]) => {
+    if (INDEX[oid]) gradeable.push({id:oid, title:ot + " (review)"});
+    subs.forEach(([sid, st]) => { if (INDEX[sid]) gradeable.push({id:sid, title:st}); });
+  });
   $app.innerHTML = `
   <section class="wrap page">
     <div class="pagehead"><nav class="crumbs" aria-label="Breadcrumb"><a href="#netplus">Network+</a><span>/</span><span>Unit ${n}</span></nav>
-      <h1>Unit ${n}: ${esc(u.title)}</h1><p>${ids.length} sub-units. Open one to practice or take its graded test.</p></div>
-    <div class="exam-card">
-      <div class="txt"><h2>Practice Unit ${n} Exam</h2><p>Questions drawn at random from every question bank in this unit. Your grade is sent to your instructor.</p>
-        <div class="specs"><span>${SIZES.unit} questions</span><span>${SIZES.unitMinutes} minutes</span><span>Pass ${PASS_MARK}%</span><span>${ready} of ${ids.length} banks ready</span></div></div>
-      <button class="btn btn-primary" id="unitBtn" ${ready? "":"disabled"}>Start unit exam</button>
+      <h1>Unit ${n}: ${esc(u.title)}</h1><p>${ids.length} sub-units. Build a graded test from one or two sub-units below, or open any sub-unit to practice.</p></div>
+    <div class="gcard">
+      <span class="eyebrow">Graded sub-unit test</span>
+      <h2>Pick the sub-unit(s) you're working on</h2>
+      <p>Choose one or two sub-units. One ${SIZES.subunit}-question graded test is built from your selection (about ${Math.floor(SIZES.subunit/2)} from each when you pick two) and saved to your instructor's dashboard.</p>
+      <div class="specs"><span>${SIZES.subunit} questions</span><span>Pass ${PASS_MARK_SUBUNIT}%</span><span>Choose 1–2 sub-units</span></div>
+      <div class="gpick-list">${gradeable.map(g => `<label class="gpick-item"><input type="checkbox" value="${g.id}"><span class="code">${g.id}</span><span class="t">${esc(g.title)}</span></label>`).join("") || '<p class="mini">No question banks ready in this unit yet.</p>'}</div>
+      <div class="gpick-foot"><span id="gpickCount" class="mini">Select 1–2 sub-units</span><button class="btn btn-primary" id="gradedBtn" disabled>Start graded test</button></div>
     </div>
+    <div class="exam-card">
+      <div class="txt"><h2>Practice Unit ${n} Exam</h2><p>${SIZES.unit} questions drawn at random from every bank in this unit. Timed, and saved to your instructor's dashboard.</p>
+        <div class="specs"><span>${SIZES.unit} questions</span><span>${SIZES.unitMinutes} minutes</span><span>Pass ${PASS_MARK}%</span><span>${ready} of ${ids.length} banks ready</span></div></div>
+      <button class="btn btn-ghost" id="unitBtn" ${ready? "":"disabled"}>Start unit exam</button>
+    </div>
+    <h3 class="units-h">Sub-units — open to practice</h3>
     ${u.objs.map(([oid, ot, subs]) => `
     <div class="obj">
       <a class="obj-head" href="#${toHash(oid)}"><span class="code">${oid}</span><span class="t">${esc(ot)}<small>Objective review: mixed questions on all of ${oid}</small></span>${pill(oid)}</a>
@@ -526,6 +1176,38 @@ function viewUnit(n){
     </div>`).join("")}
   </section>`;
   document.getElementById("unitBtn").onclick = () => startExamForm({kind:"unit", lock:"unit-"+n, title:`Practice Unit ${n} Exam: ${u.title}`, ids, n:SIZES.unit, minutes:SIZES.unitMinutes, back:"#unit-"+n});
+  const boxes = Array.from($app.querySelectorAll(".gpick-item input"));
+  const startBtn = document.getElementById("gradedBtn"), cnt = document.getElementById("gpickCount");
+  let passedSet = new Set();
+  function refresh(){
+    const sel = boxes.filter(b => b.checked);
+    boxes.forEach(b => { b.disabled = b.dataset.passed === "1" || (!b.checked && sel.length >= 2); b.closest(".gpick-item").classList.toggle("on", b.checked); });
+    startBtn.disabled = sel.length < 1;
+    cnt.textContent = sel.length ? `${sel.length} of 2 selected` : "Select 1–2 sub-units";
+  }
+  boxes.forEach(b => b.onchange = refresh);
+  // Hard block: a signed-in student can't re-take a graded sub-unit they've already passed
+  (async () => {
+    const stu = Student.get();
+    if (!stu || !CONFIG.apiEndpoint) return;
+    const r = await api("progress", {token: stu.token});
+    if (!r.ok || !r.progress || !r.progress.passedSubs) return;
+    passedSet = new Set(r.progress.passedSubs);
+    boxes.forEach(b => {
+      if (!passedSet.has(b.value)) return;
+      b.checked = false; b.disabled = true; b.dataset.passed = "1";
+      const item = b.closest(".gpick-item"); item.classList.add("passed");
+      if (!item.querySelector(".passed-badge")){ const s = document.createElement("span"); s.className = "passed-badge"; s.textContent = "Passed ✓"; item.appendChild(s); }
+    });
+    refresh();
+  })();
+  startBtn.onclick = () => {
+    const sel = boxes.filter(b => b.checked).map(b => b.value);
+    if (!sel.length) return;
+    const already = sel.filter(id => passedSet.has(id));
+    if (already.length){ cnt.textContent = `Already passed: ${already.join(", ")} — pick another sub-unit.`; refresh(); return; }
+    startExamForm({kind:"graded", lock:"unit-"+n, title:"Graded Test: " + sel.join(" + "), ids:sel, subunits:sel, n:SIZES.subunit, minutes:0, balanced:sel.length > 1, back:"#unit-"+n});
+  };
 }
 
 function viewSub(id){
@@ -538,14 +1220,12 @@ function viewSub(id){
       <span class="code">${id}${node.isObj? " · Objective review":""}</span><h1>${esc(node.title)}</h1>
       <p>${count ? `${count} questions in this bank. Each attempt serves ${SIZES.subunit} at random, with answer order shuffled.` : ""}</p></div>
     ${count ? `
-    <div class="modes">
+    <div class="modes single">
       <div class="mode"><span class="eyebrow">Practice</span><h2>Practice set</h2>
-        <ul><li>${SIZES.subunit} random questions</li><li>No sign-in, not sent to your instructor</li><li>Full review of right and wrong answers at the end</li></ul>
-        <button class="btn btn-ghost" id="practiceBtn">Start practice</button></div>
-      <div class="mode"><span class="eyebrow">Graded</span><h2>Graded test</h2>
-        <ul><li>${SIZES.subunit} random questions · pass ${PASS_MARK}%</li><li>Enter your name and email first</li><li>Your graded results are sent to your instructor</li></ul>
-        <button class="btn btn-primary" id="gradedBtn">Start graded test</button></div>
-    </div>` : `<div class="notice">This question bank is still being built. Check back soon, or practice another sub-unit in Unit ${u.n}.</div>`}
+        <ul><li>${SIZES.subunit} random questions</li><li>Not graded — nothing is sent to your instructor</li><li>Full review of right and wrong answers at the end</li></ul>
+        <button class="btn btn-primary" id="practiceBtn">Start practice</button></div>
+    </div>
+    <p class="gnote">Ready for a <b>graded test</b>? Go to the <a href="#unit-${u.n}">Unit ${u.n}</a> page, where you can pick this sub-unit (and optionally one more) to be tested on together.</p>` : `<div class="notice">This question bank is still being built. Check back soon, or practice another sub-unit in Unit ${u.n}.</div>`}
     <p style="margin-top:28px"><a href="#unit-${u.n}">← Back to Unit ${u.n}</a></p>
   </section>`;
   if (!count) return;
@@ -553,7 +1233,6 @@ function viewSub(id){
     const qs = await pickQuestions([id], SIZES.subunit);
     beginQuiz({kind:"practice", title:label, qs, back:"#"+toHash(id)});
   };
-  document.getElementById("gradedBtn").onclick = () => startExamForm({kind:"graded", lock:id, title:"Graded Test: " + label, ids:[id], n:SIZES.subunit, minutes:0, back:"#"+toHash(id)});
 }
 
 function viewOther(){
@@ -606,18 +1285,88 @@ function viewResources(){
   </section>`;
 }
 
-/* ---------- name/email form ---------- */
+/* ---------- test entry ---------- */
+function examRulesHtml(){
+  return `
+  <div class="examrules">
+    <h2>Before you begin — testing rules</h2>
+    <ol>
+      <li><b>Put all devices away.</b> Phones, smartwatches, earbuds, tablets, and any second computer must be put away — out of reach and out of view — before and during the test.</li>
+      <li><b>Close all other windows and tabs.</b> Close every other browser window and tab before you start, and keep only this test open until you finish.</li>
+      <li><b>No notes or outside help.</b> No notes, books, other websites, messages, or help from anyone. Do this on your own.</li>
+      <li><b>Stay on this screen.</b> Do not switch to another tab, window, or app once the test begins.</li>
+      <li><b>This attempt counts.</b> Once you select Begin, the test is graded and saved to your progress. Answer every question and submit before time runs out.</li>
+      <li><b>Need help?</b> Raise your hand for your instructor — do not leave the test to look anything up.</li>
+    </ol>
+    <label class="examack"><input type="checkbox" id="fack"> I have read these rules. My devices are put away, and all other windows and tabs are closed.</label>
+    <span class="err" id="fack-err" style="display:block;margin-top:4px"></span>
+  </div>`;
+}
 function startExamForm(cfg){
-  stopQuiz();
-  setNav("netplus");
-  const timed = cfg.minutes ? `${cfg.n} questions · ${cfg.minutes} minutes · pass ${PASS_MARK}%` : `${cfg.n} questions · pass ${PASS_MARK}%`;
+  stopQuiz(); setNav("netplus");
+  return CONFIG.apiEndpoint ? examFormSignedIn_(cfg) : examFormLegacy_(cfg);
+}
+function examFormSignedIn_(cfg){
+  const s = Student.get();
+  if (!s){
+    $app.innerHTML = `
+    <section class="wrap page">
+      <div class="pagehead"><span class="eyebrow">${cfg.kind === "graded" ? "Graded test" : "Practice exam"}</span><h1>${esc(cfg.title)}</h1><p>Sign in first so your result is saved to your progress and sent to your instructor.</p></div>
+      <div class="card" style="padding:18px 20px"><p style="margin:0 0 14px">Use your student ID and PIN. You'll come right back here to start the test.</p>
+      <div class="row"><button class="btn btn-primary" id="goSignin">Sign in</button><a class="btn btn-ghost" href="${cfg.back}">Cancel</a></div></div>
+    </section>`;
+    document.getElementById("goSignin").onclick = () => viewSignIn(location.hash || cfg.back);
+    return;
+  }
+  const pm = passMarkFor(cfg.kind);
+  const timed = cfg.minutes ? `${cfg.n} questions · ${cfg.minutes} minutes · pass ${pm}%` : `${cfg.n} questions · pass ${pm}%`;
   $app.innerHTML = `
   <section class="wrap page">
     <div class="pagehead"><span class="eyebrow">${cfg.kind === "graded" ? "Graded test" : "Practice exam"}</span><h1>${esc(cfg.title)}</h1><p>${timed}. ${cfg.minutes ? "The timer starts when you select Begin." : ""}</p></div>
-    <form class="form" id="who" novalidate>
+    <form class="form" id="who" novalidate autocomplete="off">
+      <div class="idbanner">Signed in as <b>${esc(s.name || s.id)}</b> <span>· ID ${esc(s.id)}</span></div>
+      <div class="field"><label for="fpass">Test password</label><input id="fpass" name="tpw" type="text" inputmode="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-lpignore="true" data-form-type="other" style="-webkit-text-security:disc;text-security:disc" required><span class="err" id="fpass-err"></span><span style="color:var(--muted);font-size:14px">Your instructor provides this password to unlock the test. It is never saved on this device.</span></div>
+      ${examRulesHtml()}
+      <div class="row"><button class="btn btn-primary" type="submit">Begin</button><a class="btn btn-ghost" href="${cfg.back}">Cancel</a></div>
+    </form>
+  </section>`;
+  document.getElementById("fpass").focus();
+  document.getElementById("who").addEventListener("submit", async e => {
+    e.preventDefault();
+    const err = document.getElementById("fpass-err"); err.textContent = "";
+    const ackErr = document.getElementById("fack-err"); ackErr.textContent = "";
+    if (!document.getElementById("fack").checked){ ackErr.textContent = "Please confirm the testing rules before you begin."; return; }
+    const pass = document.getElementById("fpass").value.trim();
+    const btn = e.submitter || e.target.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "Checking…";
+    // Verify the test password on the backend (passwords are not in the page source)
+    const vr = await api("verifyTestPassword", {token: s.token, lock: cfg.lock, pw: pass});
+    if (!vr.ok){ btn.disabled = false; btn.textContent = "Begin"; err.textContent = vr.error === "notset" ? "Not connected to the backend yet." : "Couldn't check the password — check your connection and try again."; return; }
+    if (!vr.valid){ btn.disabled = false; btn.textContent = "Begin"; err.textContent = "Incorrect test password. Ask your instructor."; return; }
+    document.getElementById("fpass").value = "";
+    btn.textContent = "Loading questions…";
+    try {
+      const qs = await (cfg.balanced ? pickBalanced : pickQuestions)(cfg.ids, cfg.n);
+      beginQuiz({...cfg, qs, name: s.name, email: "ID " + s.id, studentId: s.id});
+    } catch(err2) {
+      btn.disabled = false; btn.textContent = "Begin";
+      err.textContent = "Questions could not load. Check your connection and try again.";
+    }
+  });
+}
+/* legacy name/email form (used until CONFIG.apiEndpoint is set) */
+function examFormLegacy_(cfg){
+  stopQuiz();
+  setNav("netplus");
+  const pm = passMarkFor(cfg.kind);
+  const timed = cfg.minutes ? `${cfg.n} questions · ${cfg.minutes} minutes · pass ${pm}%` : `${cfg.n} questions · pass ${pm}%`;
+  $app.innerHTML = `
+  <section class="wrap page">
+    <div class="pagehead"><span class="eyebrow">${cfg.kind === "graded" ? "Graded test" : "Practice exam"}</span><h1>${esc(cfg.title)}</h1><p>${timed}. ${cfg.minutes ? "The timer starts when you select Begin." : ""}</p></div>
+    <form class="form" id="who" novalidate autocomplete="off">
       <div class="field"><label for="fname">Full name</label><input id="fname" name="fname" autocomplete="name" required><span class="err" id="fname-err"></span></div>
       <div class="field"><label for="femail">Email address</label><input id="femail" name="femail" type="email" autocomplete="email" required><span class="err" id="femail-err"></span></div>
-      <div class="field"><label for="fpass">Test password</label><input id="fpass" name="fpass" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" required><span class="err" id="fpass-err"></span><span style="color:var(--muted);font-size:14px">Your instructor provides this password to unlock the test.</span></div>
+      <div class="field"><label for="fpass">Test password</label><input id="fpass" name="tpw" type="text" inputmode="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-lpignore="true" data-form-type="other" style="-webkit-text-security:disc;text-security:disc" required><span class="err" id="fpass-err"></span><span style="color:var(--muted);font-size:14px">Your instructor provides this password to unlock the test. It is never saved on this device.</span></div>
+      ${examRulesHtml()}
       <div class="row"><button class="btn btn-primary" type="submit">Begin</button><a class="btn btn-ghost" href="${cfg.back}">Cancel</a></div>
     </form>
   </section>`;
@@ -628,14 +1377,16 @@ function startExamForm(cfg){
     const email = document.getElementById("femail").value.trim();
     let ok = true;
     document.getElementById("fname-err").textContent = name.length >= 2 ? "" : (ok=false, "Enter your full name.");
-    document.getElementById("femail-err").textContent = /^[^\s@]+@jobcorps\.org$/i.test(email) ? "" : (ok=false, "Not an employee email address.");
+    document.getElementById("femail-err").textContent = /^[^\s@]+@(live\.)?jobcorps\.org$/i.test(email) ? "" : (ok=false, "Please use an acceptable work email address.");
     const pass = document.getElementById("fpass").value.trim().toLowerCase();
     const expected = LOCKS[cfg.lock];
     if (expected) document.getElementById("fpass-err").textContent = pass === expected ? "" : (ok=false, "Incorrect test password. Ask your instructor.");
+    document.getElementById("fack-err").textContent = document.getElementById("fack").checked ? "" : (ok=false, "Please confirm the testing rules before you begin.");
     if (!ok) return;
+    document.getElementById("fpass").value = "";   // never retain the password
     const btn = e.submitter || e.target.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "Loading questions…";
     try {
-      const qs = await pickQuestions(cfg.ids, cfg.n);
+      const qs = await (cfg.balanced ? pickBalanced : pickQuestions)(cfg.ids, cfg.n);
       beginQuiz({...cfg, qs, name, email});
     } catch(err) {
       btn.disabled = false; btn.textContent = "Begin";
@@ -738,16 +1489,20 @@ function finishQuiz(){
   z.correct = z.items.filter(x=>x.ok).length;
   z.total = z.items.length;
   z.percent = Math.round(z.correct / z.total * 1000) / 10;
-  z.passed = z.correct / z.total >= PASS_MARK/100;
+  z.passMark = passMarkFor(z.kind);
+  z.passed = z.correct / z.total >= z.passMark/100;
   z.sendStatus = z.kind === "practice" ? null : "sending";
   renderResults();
-  if (z.kind !== "practice") sendResults(z).then(s => { if (quiz === z) { z.sendStatus = s; renderSendStatus(); } });
+  if (z.kind !== "practice"){
+    const saver = (Student.get() && CONFIG.apiEndpoint) ? saveToBackend(z) : sendResults(z);
+    Promise.resolve(saver).then(st => { if (quiz === z){ z.sendStatus = st; renderSendStatus(); } });
+  }
 }
 async function sendResults(z){
   if (!CONFIG.endpoint) return "notset";
   const payload = {
     type: z.kind, title: z.title, name: z.name, email: z.email,
-    correct: z.correct, total: z.total, percent: z.percent, passed: z.passed, passMark: PASS_MARK,
+    correct: z.correct, total: z.total, percent: z.percent, passed: z.passed, passMark: z.passMark,
     timedOut: !!z.timedOut, started: new Date(z.startedAt).toISOString(), finished: new Date(z.finishedAt).toISOString(),
     durationSec: Math.round((z.finishedAt - z.startedAt)/1000),
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
@@ -761,7 +1516,8 @@ async function sendResults(z){
 function renderSendStatus(){
   const el = document.getElementById("sendStatus"); if (!el || !quiz) return;
   const map = {
-    sending: ["", "Sending your results to your instructor…"],
+    sending: ["", "Recording your results…"],
+    saved: ["ok", "Your results were saved to your progress."],
     sent: ["ok", "Your results were sent to your instructor."],
     notset: ["err", "Your results could not be sent because the site's email connection is not set up yet. Show this screen to your instructor."],
     failed: ["err", "Your results could not be sent. Check your internet connection and tell your instructor before leaving this page."]
@@ -776,11 +1532,12 @@ function renderResults(){
   $app.innerHTML = `
   <section class="wrap page">
     <div class="pagehead"><span class="eyebrow">Results</span><h1>${esc(z.title)}</h1>${z.name ? `<p>${esc(z.name)} · ${esc(z.email)}</p>`:""}</div>
+    ${(z.passed && z.kind!=="practice") ? `<div class="celebrate" role="status"><div class="celebrate-emoji">🎉</div><div><div class="celebrate-title">Congratulations${z.name ? ", "+esc(z.name.split(" ")[0]) : ""}!</div><div class="celebrate-sub">You passed with ${z.percent}% — your results are on the way to your instructor.</div></div></div>` : ""}
     ${z.timedOut ? `<div class="notice" style="margin-bottom:16px">Time is up. Your exam was submitted automatically.</div>` : ""}
     <div class="score">
       <div class="ring"><svg viewBox="0 0 140 140" aria-hidden="true"><circle cx="70" cy="70" r="58" fill="none" stroke="var(--line)" stroke-width="12"/><circle cx="70" cy="70" r="58" fill="none" stroke="${z.passed?"var(--good)":"var(--bad)"}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${dash} ${C}"/></svg><span class="pct">${z.percent}%</span></div>
       <div><span class="verdict ${z.passed?"pass":"fail"}">${z.passed ? "Passed" : "Not passed"}</span>
-        <div class="stats"><span>Correct <b>${z.correct}</b></span><span>Incorrect <b>${wrongCount}</b></span><span>Total <b>${z.total}</b></span><span>Pass mark <b>${PASS_MARK}%</b></span><span>Time <b>${fmtTime((z.finishedAt-z.startedAt)/1000)}</b></span></div>
+        <div class="stats"><span>Correct <b>${z.correct}</b></span><span>Incorrect <b>${wrongCount}</b></span><span>Total <b>${z.total}</b></span><span>Pass mark <b>${z.passMark}%</b></span><span>Time <b>${fmtTime((z.finishedAt-z.startedAt)/1000)}</b></span></div>
         ${z.sendStatus ? `<div id="sendStatus" class="notice" style="margin-top:14px" role="status"></div>` : ""}
         <div class="row" style="margin-top:16px"><a class="btn btn-primary" href="${z.back}" id="backBtn">Back</a>${z.kind==="practice" ? `<button class="btn btn-ghost" id="again">New practice set</button>`:""}</div>
       </div>
@@ -800,11 +1557,38 @@ function renderResults(){
   renderSendStatus();
   document.body.classList.remove("exam-mode");
   document.body.classList.remove("practice-mode");
+  if (z.passed && z.kind !== "practice" && !z.celebrated){ z.celebrated = true; celebrate(); }
   $app.querySelectorAll("[data-f]").forEach(b => b.onclick = () => { z.filter = b.dataset.f; renderResults(); });
   document.getElementById("backBtn").onclick = e => { e.preventDefault(); const back = z.back; stopQuiz(); if (location.hash === back) route(); else location.hash = back; };
   const again = document.getElementById("again");
   if (again) again.onclick = () => { const id = fromHash(z.back.slice(1)); stopQuiz(); pickQuestions([id], SIZES.subunit).then(qs => beginQuiz({kind:"practice", title:z.title, qs, back:z.back})); };
   window.scrollTo(0,0);
+}
+
+/* ---------- congratulations confetti ---------- */
+function celebrate(){
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let c = document.getElementById("confetti");
+  if (!c){ c = document.createElement("canvas"); c.id = "confetti"; document.body.appendChild(c); }
+  const ctx = c.getContext("2d"), DPR = Math.min(2, window.devicePixelRatio || 1);
+  c.width = innerWidth * DPR; c.height = innerHeight * DPR;
+  const colors = ["#0a7387","#17804a","#ffcf33","#ff6b6b","#5b8def","#ff9f1c"], parts = [];
+  for (let i=0;i<150;i++) parts.push({
+    x: Math.random()*c.width, y: -20*DPR - Math.random()*c.height*0.3,
+    r: (6+Math.random()*7)*DPR, color: colors[i%colors.length],
+    vx: (-1+Math.random()*2)*DPR*2, vy: (3+Math.random()*4)*DPR,
+    rot: Math.random()*6.28, vr: -0.2+Math.random()*0.4, shape: Math.random()<0.5?0:1 });
+  const start = performance.now(), dur = 3200;
+  (function frame(t){
+    const el = t - start; ctx.clearRect(0,0,c.width,c.height);
+    for (const p of parts){ p.vy += 0.05*DPR; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot); ctx.fillStyle = p.color;
+      if (p.shape===0) ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.6);
+      else { ctx.beginPath(); ctx.arc(0,0,p.r/2,0,6.28); ctx.fill(); }
+      ctx.restore(); }
+    if (el < dur) requestAnimationFrame(frame);
+    else { ctx.clearRect(0,0,c.width,c.height); if (c.parentNode) c.parentNode.removeChild(c); }
+  })(start);
 }
 
 /* ---------- splash network animation ---------- */
